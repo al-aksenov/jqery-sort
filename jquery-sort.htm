@@ -1,0 +1,96 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+"use strict"
+function sortByPrice(rev = false){
+	var boxes = $(".box-wrapper").detach();
+	
+	if(rev) {
+		boxes.sort(function (a, b) {
+				return +$(a).attr("data-price") < +$(b).attr("data-price") ? 1 : -1;
+			});
+	}
+	else {
+		boxes.sort(function (a, b) {
+				return +$(a).attr("data-price") < +$(b).attr("data-price") ? -1 : 1;
+			});
+	}
+	boxes.appendTo('.main-wrapper');
+}
+$(document).ready(function() {
+	$('#sort-by-price-asc').click(function(){
+		sortByPrice();
+	});
+	$('#sort-by-price-desc').click(function(){
+		sortByPrice(true);
+	});
+}); 
+</script>
+<style>
+	.main-wrapper {
+		display:flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	.box-wrapper {
+		width:30%;
+		border: 1px solid red;
+		height:150px;
+		margin-bottom: 20px;
+	}
+</style>
+<br>
+<div id="sort-by-price-asc" style = "cursor: pointer;">Сортировать по возрастанию цены</div>
+<br>
+<br>
+<div id="sort-by-price-desc" style = "cursor: pointer;">Сортировать по убыванию цены</div>
+<br>
+<div class="main-wrapper">
+	<div id="box-0" class="box-wrapper" data-price="2000">
+		<div>
+			Some content A
+		</div>
+		<div>
+			2000
+		</div>
+	</div>
+	<div id="box-1" class="box-wrapper" data-price="5000">
+		<div>
+			Some content B
+		</div>
+		<div>
+			5000
+		</div>
+	</div>
+	<div id="box-2" class="box-wrapper" data-price="4000">
+		<div>
+			Some content C
+		</div>
+		<div>
+			4000
+		</div>
+	</div>
+	<div id="box-3" class="box-wrapper" data-price="25500">
+		<div>
+			Some content D
+		</div>
+		<div>
+			25500
+		</div>
+	</div>
+	<div id="box-4" class="box-wrapper" data-price="113">
+		<div>
+			Some content E
+		</div>
+		<div>
+			113
+		</div>
+	</div>
+	<div id="box-5" class="box-wrapper" data-price="7000">
+		<div>
+			Some content F
+		</div>
+		<div>
+			7000
+		</div>
+	</div>
+</div>
